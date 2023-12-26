@@ -12,12 +12,11 @@ const TravelWatcher = () => {
     const paramsString = searchParams.toString()
     const updatedParams = paramsString.replace(`token=${token}`, '')
     const clearedUrl = `${path}?${updatedParams}`
-    const signWithToken = async(token: string) => {
-        await signInWithCustomToken(auth, token)
-    }
     if (token) {
-        signWithToken(token)
-        push(clearedUrl)
+        signInWithCustomToken(auth, token)
+        .then((credentials) => {
+            push(clearedUrl)
+        })
     }
     return <></>
 }

@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: JSX.Element }) {
     return (
       <html lang="en" className={`${first_font.className} ${first_font.variable}`}>
-        <TravelWatcher />
         <body className='min-h-screen dark'>
+          <TravelWatcher />
           {children}
         </body>
       </html>
