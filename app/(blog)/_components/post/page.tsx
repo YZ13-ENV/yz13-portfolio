@@ -8,7 +8,10 @@ import PostControls from "./post-controls"
 import PostTemplate from "@/components/templates/post/post.template"
 import NewPostBadge from "@/components/shared/new-post-badge"
 import CategoryBadge from "@/components/shared/category-badge"
-import { ForwardRefEditor } from "@/components/shared/markdown-v2-forward-ref"
+import remarkGfm from "remark-gfm";
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { serialize } from 'next-mdx-remote/serialize'
+
 
 type Props = {
     postId: string
@@ -55,7 +58,7 @@ const PostPage = async({ postId }: Props) => {
                 </PostTemplate.Side>
                 <PostTemplate.Separator />
                 <PostTemplate.Content>
-                    <ForwardRefEditor markdown={post.content} />
+                    <MDXRemote source={post.content} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>

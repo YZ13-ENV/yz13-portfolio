@@ -7,6 +7,7 @@ import {
   quotePlugin,
   thematicBreakPlugin,
   markdownShortcutPlugin,
+  linkPlugin,
   MDXEditor,
   type MDXEditorMethods,
   type MDXEditorProps,
@@ -23,6 +24,7 @@ export default function InitializedMDXEditor({
       plugins={[
         headingsPlugin(),
         listsPlugin(),
+        linkPlugin({ disableAutoLink: true }),
         quotePlugin(),
         thematicBreakPlugin(),
         markdownShortcutPlugin(),

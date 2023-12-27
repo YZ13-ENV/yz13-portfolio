@@ -130,4 +130,8 @@
   blockquote {
     @apply p-2 my-2 rounded-lg h-fit bg-card
   }
+  a[href]:after { content : "" }
+  /* a {
+    @apply underline text-accent-foreground
+  } */
 }
