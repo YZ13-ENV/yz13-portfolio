@@ -1,6 +1,5 @@
 'use client'
 import { blog } from "@/api/blog"
-import { Markdown } from "@/components/shared/markdown"
 import Textarea from "@/components/shared/textarea"
 import PostTemplate from "@/components/templates/post/post.template"
 import { Button } from "@/components/ui/button"
@@ -16,6 +15,7 @@ import PostCategory from "./post-category"
 import { categories } from "@/const/categories"
 import PostThumbnail from "./post-thumbnail"
 import { useAuthState } from "@/hooks/useAuthState"
+import { ForwardRefEditor } from "@/components/shared/markdown-v2-forward-ref"
 
 type Props = {
     preloadPost: PartialDocPost | null
@@ -132,11 +132,7 @@ const PostForm = ({ preloadPost, postId: providedPostId }: Props) => {
                 <PostTemplate.Content>
                     <PostThumbnail postId={postId} disabled={loading || !name || !validPostName || !user}
                     setThumbnail={setThumbnail} thumbnail={thumbnail} />
-                    {
-                        preview
-                        ? <Markdown pageMode>{content || '### Введите содержание поста'}</Markdown>
-                        : <Textarea value={content} className="w-full" onChange={ e => setContent(e.target.value) } placeholder="Введите содержание поста"  />
-                    }
+                    <ForwardRefEditor markdown={content} onChange={markdown => setContent(markdown)} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>

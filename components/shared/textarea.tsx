@@ -10,21 +10,17 @@ const defaultStyle: React.CSSProperties = {
 };
 const Textarea = (props: DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>) => {
     const ref = useRef<ElementRef<'textarea'>>(null);
+    const resize = (textarea: HTMLTextAreaElement) => {
+        textarea.style.height = "40px";
+        const scrollHeight = textarea.scrollHeight;
+        textarea.style.height = scrollHeight + "px";
+    }
     const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         if (props.onChange) props.onChange(e)
-        if (ref.current) {
-            ref.current.style.height = "40px";
-            const scrollHeight = ref.current.scrollHeight;
-            ref.current.style.height = scrollHeight + "px";
-        }
+        if (ref.current) resize(ref.current)
     }
     useLayoutEffect(() => {
-        const area = ref.current
-        if (props.value && area) {
-            ref.current.style.height = "40px";
-            const scrollHeight = ref.current.scrollHeight;
-            ref.current.style.height = scrollHeight + "px";
-        }
+        if (props.value && ref.current) resize(ref.current)
     },[props.value, ref])
     return (
         <textarea {...props} ref={ref} onChange={onChange} style={{...defaultStyle}} />

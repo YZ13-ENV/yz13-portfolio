@@ -91,3 +91,43 @@
     @apply bg-primary text-primary-foreground
   }
 }
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold text-accent-foreground
+  }
+  h2 {
+    @apply text-3xl font-bold text-accent-foreground
+  }
+  h3 {
+    @apply text-2xl font-bold text-accent-foreground
+  }
+  h4 {
+    @apply text-xl font-bold text-accent-foreground
+  }
+  h5 {
+    @apply text-lg font-bold text-accent-foreground
+  }
+  h6 {
+    @apply text-base font-bold text-accent-foreground
+  }
+  ul {
+    @apply m-2 ml-4 list-none list-inside
+  }
+  ol {
+    @apply m-2 ml-4 list-decimal list-inside
+  }
+  li {
+    @apply relative mb-2 text-accent-foreground
+  }
+  li::before {
+    content: '–';
+    @apply text-muted-foreground -left-3 absolute
+  }
+  strong {
+    @apply font-bold text-inherit
+  }
+  blockquote {
+    @apply p-2 my-2 rounded-lg h-fit bg-card
+  }
+}

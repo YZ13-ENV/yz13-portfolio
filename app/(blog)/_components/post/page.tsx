@@ -1,18 +1,14 @@
 import { blog } from "@/api/blog"
-import { file } from "@/api/file"
 import { Button } from "@/components/ui/button"
 import { DateTime } from "luxon"
 import Link from "next/link"
 import { BiLeftArrowAlt } from "react-icons/bi"
 import GroupPostAuthors from "./post-author-group"
 import PostControls from "./post-controls"
-import Image from "next/image"
-import { Markdown } from "@/components/shared/markdown"
 import PostTemplate from "@/components/templates/post/post.template"
-import { getCategoryName } from "@/const/categories"
-import { Categories } from "@/types/common"
 import NewPostBadge from "@/components/shared/new-post-badge"
 import CategoryBadge from "@/components/shared/category-badge"
+import { ForwardRefEditor } from "@/components/shared/markdown-v2-forward-ref"
 
 type Props = {
     postId: string
@@ -59,7 +55,7 @@ const PostPage = async({ postId }: Props) => {
                 </PostTemplate.Side>
                 <PostTemplate.Separator />
                 <PostTemplate.Content>
-                    <Markdown pageMode>{post.content}</Markdown>
+                    <ForwardRefEditor markdown={post.content} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>
