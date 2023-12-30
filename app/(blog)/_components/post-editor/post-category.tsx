@@ -8,13 +8,14 @@ import { Dispatch, SetStateAction, useState } from "react"
 
 
 type Props = {
+    disabled?: boolean
     category: Post['category'] 
     setCategory: Dispatch<SetStateAction<Post['category']>>
 }
-const PostCategory = ({ category, setCategory }: Props) => {
+const PostCategory = ({ category, disabled=false, setCategory }: Props) => {
     return (
         <Select defaultValue="YZ13" onValueChange={value => setCategory(value as Post['category'])}>
-            <SelectTrigger className="w-36">
+            <SelectTrigger disabled={disabled} className="w-36">
                 { getCategoryName(category as keyof Categories) }
             </SelectTrigger>
             <SelectContent>

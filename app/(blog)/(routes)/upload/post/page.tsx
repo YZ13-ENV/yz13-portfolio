@@ -21,11 +21,14 @@ const page = async ({ searchParams }: Props) => {
     const uid = uidCookie ? uidCookie.value : null
     const postId = searchParams.postId
     const post = postId ? await blog.getById(postId) : null
+    const isCommunityMode = uid ? !have_access.includes(uid) : false
+    const isTeamMode = uid ? have_access.includes(uid) : false
+    const postMode: 'team' | 'community' = isCommunityMode ? 'community' : isTeamMode ? 'team' : 'community' // team | community
     // console.log(post, postId)
     if (!uid) redirect('/')
     if (uid && postId && !post) redirect('/upload/post')
     if (uid && post && postId && compareAuthor(uid, post.authorsId) === false) redirect('/upload/post')
-    if (uid && !have_access.includes(uid)) redirect('/')
+    // if (uid && !have_access.includes(uid)) redirect('/')
     return (
         <>
             <header className='w-full h-16 px-6 border-b shrink-0'>
@@ -34,7 +37,7 @@ const page = async ({ searchParams }: Props) => {
                 </Suspense>
             </header>
             <div className='w-full h-full max-w-5xl px-6 mx-auto'>
-                <PostForm preloadPost={post} postId={postId} />
+                <PostForm preloadPost={post} postId={postId} mode={postMode} />
             </div>
         </>
     )

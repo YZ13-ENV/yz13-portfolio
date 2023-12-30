@@ -9,7 +9,7 @@ import { auth } from "@/utils/app"
 import { DateTime } from "luxon"
 import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
-import { BiHide, BiLoaderAlt, BiShow } from "react-icons/bi"
+import { BiLoaderAlt } from "react-icons/bi"
 import GroupPostAuthors from "../post/post-author-group"
 import PostCategory from "./post-category"
 import { categories } from "@/const/categories"
@@ -20,13 +20,13 @@ import { ForwardRefEditor } from "@/components/shared/markdown-v2-forward-ref"
 type Props = {
     preloadPost: PartialDocPost | null
     postId: string | undefined
+    mode?: 'team' | 'community'
 }
-const PostForm = ({ preloadPost, postId: providedPostId }: Props) => {
+const PostForm = ({ preloadPost, postId: providedPostId, mode='community' }: Props) => {
     const post = preloadPost
     const [user] = useAuthState(auth)
     const [name, setName] = useState<string>(post ? post.name : '')
     const [description, setDescription] = useState<string>(post && post.description ? post.description : '')
-    const [preview, setPreview] = useState<boolean>(false)
     const [content, setContent] = useState<string>(post ? post.content : '')
     const [thumbnail, setThumbnail] = useState<string | undefined>(post && post.thumbnail ? post.thumbnail : undefined)
     const [category, setCategory] = useState<Post['category']>(post && post.category ? post.category : categories[categories.length - 3] as Post['category'])
@@ -46,7 +46,6 @@ const PostForm = ({ preloadPost, postId: providedPostId }: Props) => {
     const validPostName = regEx.test(name)
     const clearForm = () => {
         setName('')
-        setPreview(false)
         setContent('')
         setDescription('')
     }
@@ -105,7 +104,7 @@ const PostForm = ({ preloadPost, postId: providedPostId }: Props) => {
                 <PostTemplate.Header>
                     { process.env.NODE_ENV === 'development' ? <span className="text-muted-foreground">Пост будет доступен по id: {postId}</span> : <div></div> }
                     <div className="flex flex-col w-full gap-4 py-4">
-                        <PostCategory category={category} setCategory={setCategory} />
+                        <PostCategory category={mode === 'team' ? category : 'community'} disabled={mode === 'community'} setCategory={setCategory} />
                     </div>
                     <div className="flex flex-col w-full gap-4 pt-4 pb-12">
                         <Input placeholder='Введите название поста' disabled={!!post} value={name} onChange={ e => setName(e.target.value ) }
@@ -114,7 +113,6 @@ const PostForm = ({ preloadPost, postId: providedPostId }: Props) => {
                         onChange={ e => setDescription(e.target.value) } placeholder="Введите описание для поста"  />
                     </div>
                     <div className="flex items-center gap-2 w-fit h-fit">
-                        <Button onClick={() => setPreview(!preview)} size='icon' variant={preview ? 'default' : 'outline'}>{ preview ? <BiHide /> : <BiShow />}</Button>
                         <Button disabled variant='outline'>Добавить соавторов</Button>
                         <Button onClick={createPost} disabled={loading || !name || !validPostName || !user} className="gap-2">
                             { loading && <BiLoaderAlt className='animate-spin' /> }

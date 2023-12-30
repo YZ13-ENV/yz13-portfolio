@@ -3,7 +3,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
 import UserPreview from "./user-preview"
 import Logout from "./logout"
-import { have_access } from "@/const/access-to-publish"
 import { User } from "firebase/auth"
 import Link from "next/link"
 
@@ -11,7 +10,6 @@ type Props = {
     user: User
 }
 const UserDropdown = ({ user }: Props) => {
-    const haveAccessToPublish = have_access.includes(user.uid)
     if (!user) return null
     return (
         <DropdownMenu>
@@ -24,13 +22,8 @@ const UserDropdown = ({ user }: Props) => {
             <DropdownMenuContent className="p-4 w-60 rounded-xl">
                 <UserPreview user={user} />
                 <DropdownMenuSeparator />
-                {
-                    haveAccessToPublish &&
-                    <>
-                        <DropdownMenuItem asChild><Link href='/upload/post'>Опубликовать пост</Link></DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                    </>
-                }
+                <DropdownMenuItem asChild><Link href='/upload/post'>Опубликовать пост</Link></DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <Logout />
             </DropdownMenuContent>
         </DropdownMenu>
