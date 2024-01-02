@@ -135,3 +135,9 @@
     @apply underline text-accent-foreground
   } */
 }
+
+@layer components {
+  .last-posts-grid {
+    @apply flex flex-col w-full grid-cols-3 grid-rows-6 gap-4 md:h-[38rem] lg:my-12 my-2 shrink-0 h-fit md:grid
+  }
+}

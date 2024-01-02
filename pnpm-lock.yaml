@@ -97,7 +97,7 @@ dependencies:
     version: 1.0.7(tailwindcss@3.4.0)
   ui:
     specifier: github:yz13-env/ui
-    version: github.com/yz13-env/ui/5ad2e9c0976d3a1ceaa142ab6ac26efdfc0c1481(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.0)
+    version: github.com/yz13-env/ui/5d26196c48ad6cb7aa23b6de87daf5e516dc518c(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.0)
 
 devDependencies:
   '@mdxeditor/editor':
@@ -7866,9 +7866,9 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
-  github.com/yz13-env/ui/5ad2e9c0976d3a1ceaa142ab6ac26efdfc0c1481(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.0):
-    resolution: {tarball: https://codeload.github.com/yz13-env/ui/tar.gz/5ad2e9c0976d3a1ceaa142ab6ac26efdfc0c1481}
-    id: github.com/yz13-env/ui/5ad2e9c0976d3a1ceaa142ab6ac26efdfc0c1481
+  github.com/yz13-env/ui/5d26196c48ad6cb7aa23b6de87daf5e516dc518c(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.0):
+    resolution: {tarball: https://codeload.github.com/yz13-env/ui/tar.gz/5d26196c48ad6cb7aa23b6de87daf5e516dc518c}
+    id: github.com/yz13-env/ui/5d26196c48ad6cb7aa23b6de87daf5e516dc518c
     name: ui
     version: 0.0.2
     engines: {node: '21'}
