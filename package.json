@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepublish": "pnpm build && vercel && vercel --prod",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
@@ -35,9 +36,11 @@
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.12.0",
+    "react-responsive": "^9.0.2",
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.2.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "ui": "github:yz13-env/ui"
   },
   "devDependencies": {
     "@mdxeditor/editor": "^1.14.3",
