@@ -140,4 +140,13 @@
   .last-posts-grid {
     @apply flex flex-col w-full grid-cols-3 grid-rows-6 gap-4 md:h-[38rem] lg:my-12 my-2 shrink-0 h-fit md:grid
   }
+  .template-post-body {
+    @apply w-full h-full flex mx-auto max-w-7xl lg:flex-row-reverse flex-col
+  }
+  .template-post-side {
+    @apply flex lg:w-1/4 w-full items-start flex-col p-6 gap-2 mx-auto h-fit
+  }
+  .template-post-content {
+    @apply w-3/4 lg:border-r px-6 py-6 border-0
+  }
 }

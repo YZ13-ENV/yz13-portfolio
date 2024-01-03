@@ -5,7 +5,7 @@ type Props = {
 }
 const PostSide = ({ children }: Props) => {
     return (
-        <div className="flex lg:w-1/4 w-full items-start flex-col p-6 gap-2 mx-auto h-fit">
+        <div className="template-post-side">
             { children }
         </div>
     )

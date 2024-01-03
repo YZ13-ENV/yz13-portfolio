@@ -33,7 +33,7 @@ const SearchResult = ({ post }: Props) => {
                         }
                         {
                             post.category &&
-                            <CategoryBadge category={post.category} />
+                            <CategoryBadge category={post.category} asLink />
                         }
                     </div>
                     <span className="text-sm capitalize text-muted-foreground">

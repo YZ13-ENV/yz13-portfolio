@@ -5,7 +5,7 @@ type Props = {
 }
 const PostBody = ({ children }: Props) => {
     return (
-        <div className="w-full h-full flex mx-auto max-w-7xl lg:flex-row-reverse flex-col">
+        <div className="template-post-body">
             { children }
         </div>
     )

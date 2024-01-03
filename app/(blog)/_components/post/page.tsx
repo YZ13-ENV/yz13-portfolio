@@ -8,9 +8,7 @@ import PostControls from "./post-controls"
 import PostTemplate from "@/components/templates/post/post.template"
 import NewPostBadge from "@/components/shared/new-post-badge"
 import CategoryBadge from "@/components/shared/category-badge"
-import remarkGfm from "remark-gfm";
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { serialize } from 'next-mdx-remote/serialize'
 
 
 type Props = {
