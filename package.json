@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "prepublish": "pnpm build && vercel && vercel --prod",
+    "postinstall:ui": "pnpm update ui",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
