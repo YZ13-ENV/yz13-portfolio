@@ -130,7 +130,7 @@ const PostForm = ({ preloadPost, postId: providedPostId, mode='community' }: Pro
                 <PostTemplate.Content>
                     <PostThumbnail postId={postId} disabled={loading || !name || !validPostName || !user}
                     setThumbnail={setThumbnail} thumbnail={thumbnail} />
-                    <ForwardRefEditor markdown={content} onChange={markdown => setContent(markdown)} />
+                    <ForwardRefEditor markdown={content.replace(/\n/gi, "&nbsp; \n")} onChange={markdown => setContent(markdown)} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>

@@ -9,7 +9,8 @@ import PostTemplate from "@/components/templates/post/post.template"
 import NewPostBadge from "@/components/shared/new-post-badge"
 import CategoryBadge from "@/components/shared/category-badge"
 import { MDXRemote } from 'next-mdx-remote/rsc'
-
+import remarkGfm from 'remark-gfm'
+import remarkBreaks from 'remark-breaks'
 
 type Props = {
     postId: string
@@ -56,7 +57,8 @@ const PostPage = async({ postId }: Props) => {
                 </PostTemplate.Side>
                 <PostTemplate.Separator />
                 <PostTemplate.Content>
-                    <MDXRemote source={post.content} />
+                    <MDXRemote options={{ mdxOptions: { remarkPlugins: [remarkGfm, remarkBreaks] }, }}
+                    source={post.content.replace(/\n/gi, "&nbsp; \n")} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>

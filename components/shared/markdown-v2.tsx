@@ -1,7 +1,6 @@
 "use client"
 // InitializedMDXEditor.tsx
 import type { ForwardedRef } from "react";
-import remarkGfm from 'remark-gfm'
 import {
   headingsPlugin,
   listsPlugin,
