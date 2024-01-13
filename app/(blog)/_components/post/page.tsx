@@ -58,7 +58,7 @@ const PostPage = async({ postId }: Props) => {
                 <PostTemplate.Separator />
                 <PostTemplate.Content>
                     <MDXRemote options={{ mdxOptions: { remarkPlugins: [remarkGfm, remarkBreaks] }, }}
-                    source={post.content.replace(/\n/gi, "&nbsp; \n")} />
+                    source={post.content} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>

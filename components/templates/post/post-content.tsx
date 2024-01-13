@@ -5,7 +5,7 @@ type Props = {
 }
 const PostContent = ({ children }: Props) => {
     return (
-        <div className="template-post-content">
+        <div className="template-post-content md-layout">
             { children }
         </div>
     )

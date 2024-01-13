@@ -20,7 +20,7 @@ export default function InitializedMDXEditor({
 }: { editorRef: ForwardedRef<MDXEditorMethods> | null } & MDXEditorProps) {
   return (
     <MDXEditor
-      contentEditableClassName="!ring-0 !border-0 !outline-none"
+      contentEditableClassName="!ring-0 !border-0 !outline-none md-layout"
       plugins={[
         headingsPlugin(),
         listsPlugin(),
