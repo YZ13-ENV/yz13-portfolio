@@ -1,4 +1,4 @@
-import { blog } from '@/api/blog'
+import { blog } from 'api'
 import GridItem from '@/components/shared/grid/grid-item'
 import GridTemplate from '@/components/shared/grid/grid-template'
 import { CategoriesGridRatio, defaultRatio } from '@/const/categories'
@@ -23,8 +23,8 @@ const LastPosts = async({ category='all' }: Props) => {
           <GridTemplate>
             {
               posts && posts.map((post, index) => {
-                const ratio = category 
-                ? CategoriesGridRatio[category].split('-') 
+                const ratio = category
+                ? CategoriesGridRatio[category].split('-')
                 : defaultRatio.split('-')
                 const span = `span ${ratio[index]} / span ${ratio[index]}`
                 return <GridItem key={post.doc_id} post={post} rowSpan={span} />

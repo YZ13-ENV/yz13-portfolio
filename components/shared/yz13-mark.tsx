@@ -1,11 +1,10 @@
-import { config } from '@/app.config'
-import RemoteServerLogo from './remote/remote-logo-server'
+import Image from 'next/image'
 
 const YZ13Mark = () => {
     return (
         <div className="flex items-center gap-2 w-fit h-fit">
             <div className="w-fit h-fit items-center gap-2 sm:flex hidden">
-                <RemoteServerLogo dark={config.remote.logo.dark} light={config.remote.logo.light} size={24} alt="dm-logo" />
+                <Image src={"https://cdn.darkmaterial.space/dm/icons/DM-dark.svg"} width={24} height={24} alt="dm-logo" />
                 <span className="text-xl text-muted-foreground">\</span>
             </div>
             <h1 className="text-xl font-semibold text-center text-accent-foreground">YZ13</h1>

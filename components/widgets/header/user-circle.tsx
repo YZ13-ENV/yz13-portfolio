@@ -5,13 +5,14 @@ import { useMediaQuery } from 'react-responsive'
 import { useEffect, useState } from 'react'
 import { user as userAPI } from '@/api/user'
 import { menu } from '@/const/menu-map'
-import { useSession } from '@/hooks/useSession'
+import { useSession } from 'hooks'
+import { auth } from '@/utils/app'
 
 type Props = {
     size?: number
 }
 const User = ({ size=36 }: Props) => {
-    const [session, controls, user] = useSession()
+    const [session, controls, user] = useSession(auth)
     const [isSubscriber, setIsSubscriber] = useState<boolean>(false)
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 786px)' })
     const link = process.env.NODE_ENV === 'development'
