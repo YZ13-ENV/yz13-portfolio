@@ -45,7 +45,7 @@ const User = ({ size=36 }: Props) => {
         .then(data => setIsSubscriber(data ? data.isSubscriber : false))
     },[user])
     return (
-        <UserCircle size={size} isSubscriber={isSubscriber} map={menuWithSignOut} loginLink={`https://auth.darkmaterial.space/login/email?continue=${link}`}
+        <UserCircle size={size} isSubscriber={isSubscriber} map={menuWithSignOut} loginLink={link}
         activeMenu={isTabletOrMobile ? 'mobile' : 'desktop'} user={user as User | undefined} buttonSize='lg' />
     )
 }
