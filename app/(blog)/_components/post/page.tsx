@@ -55,7 +55,7 @@ const PostPage = async({ postId }: Props) => {
                     <span className='text-muted-foreground'>Под авторством</span>
                     <GroupPostAuthors authors={post.authorsId} />
                 </PostTemplate.Side>
-                <PostTemplate.Separator />
+                {/* <PostTemplate.Separator /> */}
                 <PostTemplate.Content>
                     <MDXRemote options={{ mdxOptions: { remarkPlugins: [remarkGfm, remarkBreaks] }, }}
                     source={post.content} />

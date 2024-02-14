@@ -1,4 +1,3 @@
-import TravelWatcher from '@/components/entities/travel/watcher'
 import './globals.css'
 import 'ui/dist/style.css'
 import type { Metadata } from 'next'
@@ -14,7 +13,6 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
     return (
       <html lang="en" className={`${first_font.className} ${first_font.variable}`}>
         <body className='min-h-screen dark'>
-          <TravelWatcher />
           {children}
         </body>
       </html>
