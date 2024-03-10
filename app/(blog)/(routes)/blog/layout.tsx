@@ -12,7 +12,7 @@ type Props = {
 const layout = ({ children }: Props) => {
     return (
         <>
-            <header className="border-b w-full h-16 shrink-0">
+            <header className="w-full h-16 shrink-0">
                 <div className="w-full h-full px-6 mx-auto flex items-center justify-between">
                     <Suspense fallback={<HeaderSkeleton />}>
                         <Header />
@@ -20,7 +20,7 @@ const layout = ({ children }: Props) => {
                 </div>
             </header>
             <CategoryTemplate>
-                { children }
+                {children}
             </CategoryTemplate>
             <Footer />
         </>

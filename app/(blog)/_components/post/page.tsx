@@ -1,21 +1,21 @@
 import { blog } from "@/api/blog"
+import CategoryBadge from "@/components/shared/category-badge"
+import NewPostBadge from "@/components/shared/new-post-badge"
+import PostTemplate from "@/components/templates/post/post.template"
 import { Button } from "@/components/ui/button"
 import { DateTime } from "luxon"
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from "next/link"
 import { BiLeftArrowAlt } from "react-icons/bi"
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
 import GroupPostAuthors from "./post-author-group"
 import PostControls from "./post-controls"
-import PostTemplate from "@/components/templates/post/post.template"
-import NewPostBadge from "@/components/shared/new-post-badge"
-import CategoryBadge from "@/components/shared/category-badge"
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import remarkGfm from 'remark-gfm'
-import remarkBreaks from 'remark-breaks'
 
 type Props = {
     postId: string
 }
-const PostPage = async({ postId }: Props) => {
+const PostPage = async ({ postId }: Props) => {
     const post = await blog.getById(postId)
     const now = DateTime.now()
     const postCreatedAtDate = post ? DateTime.fromSeconds(post.createdAt) : null
@@ -39,13 +39,13 @@ const PostPage = async({ postId }: Props) => {
                                 <CategoryBadge category={post.category} asLink />
                             }
                             <span className='capitalize text-sm text-muted-foreground'>
-                                { DateTime.fromSeconds(post.createdAt).setLocale('ru').toFormat(' EEEE, dd MMMM yyyy ') }
+                                {DateTime.fromSeconds(post.createdAt).setLocale('ru').toFormat(' EEEE, dd MMMM yyyy ')}
                             </span>
                         </div>
                     </div>
                     <div className="flex flex-col w-full gap-4 pt-4 pb-12">
-                        <h1 className='lg:text-5xl text-2xl font-semibold normal-case text-accent-foreground'>{ post.name }</h1>
-                        { post.description && <span className='lg:text-xl text-base font-light text-muted-foreground'>{ post.description }</span> }
+                        <h1 className='lg:text-5xl text-2xl font-semibold normal-case text-accent-foreground'>{post.name}</h1>
+                        {post.description && <span className='lg:text-xl text-base font-light text-muted-foreground'>{post.description}</span>}
                     </div>
                     <PostControls author={post.authorsId} postId={post.doc_id} pinned={post.pinned} />
                 </PostTemplate.Header>
@@ -58,7 +58,7 @@ const PostPage = async({ postId }: Props) => {
                 {/* <PostTemplate.Separator /> */}
                 <PostTemplate.Content>
                     <MDXRemote options={{ mdxOptions: { remarkPlugins: [remarkGfm, remarkBreaks] }, }}
-                    source={post.content} />
+                        source={post.content} />
                 </PostTemplate.Content>
             </PostTemplate.Body>
         </PostTemplate>

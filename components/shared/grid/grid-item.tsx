@@ -1,6 +1,7 @@
 import { file } from "@/api/file"
 import GroupAuthorsMiniSkeleton from "@/components/skeletons/group-authors-mini"
 import { cdn } from "@/helpers/cdn"
+import { cn } from "@/lib/utils"
 import type { DocPost } from "@/types/post"
 import { DateTime } from "luxon"
 import dynamic from "next/dynamic"
@@ -23,7 +24,10 @@ const GridItem = async ({ post, colSpan, rowSpan }: Props) => {
     const now = DateTime.now()
     const postCreatedAtDate = DateTime.fromSeconds(post.createdAt)
     const isRecent = now.day === postCreatedAtDate.day && now.month === postCreatedAtDate.month && now.year === postCreatedAtDate.year
-    const className = `relative w-full md:h-full h-[24rem] shrink-0 overflow-hidden relative ${colSpan || ''} cursor-pointer border hover:border-muted-foreground transition-colors duration-500 rounded-lg group`
+    const className = cn(
+        colSpan ? colSpan : "",
+        "relative w-full md:h-full h-[24rem] shrink-0 overflow-hidden relative cursor-pointer border hover:!border-accent-foreground transition-colors duration-500 rounded-lg group"
+    )
     return (
         <Link style={{ gridRow: rowSpan }}
             href={`/blog/${post.doc_id}`} className={className}>
@@ -41,7 +45,7 @@ const GridItem = async ({ post, colSpan, rowSpan }: Props) => {
                 {
                     thumbnail &&
                     <Image src={thumbnail} fill alt='article thumbnail'
-                        className="object-center object-cover" />
+                        className="object-center group-hover:scale-110 transition-transform rounded-lg object-cover" />
                 }
             </div>
             <div className="absolute top-0 left-0 w-full h-full transition-opacity duration-500 rounded-md bg-gradient-to-t from-background to-transparent group-hover:opacity-50" />

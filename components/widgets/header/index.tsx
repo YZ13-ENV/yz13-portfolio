@@ -1,5 +1,5 @@
-import dynamic from 'next/dynamic'
 import YZ13MarkSkeleton from '@/components/skeletons/YZ13-mark'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 const UserSection = dynamic(() => import('./user-section'), {
     ssr: false,
